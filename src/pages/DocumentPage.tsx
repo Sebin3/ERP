@@ -248,7 +248,7 @@ export function DocumentsPage() {
   const changeEntityType = (value: EntityType) => { setEntityType(value); setEntityId(entityOptions(state, value)[0]?.value ?? '') }
 
   return <>
-    <PageHeader title="Documentos" description="Repositorio de archivos asociados a las operaciones del ERP." actions={canUpload ? <Button leadingIcon={Plus} onClick={() => setDrawerOpen(true)}>Subir documento</Button> : undefined} />
+    <PageHeader title="Gesti?n documental" description="Repositorio de archivos asociados a las operaciones del ERP." actions={canUpload ? <Button leadingIcon={Plus} onClick={() => setDrawerOpen(true)}>Subir documento</Button> : undefined} />
     <PageContent>
       <div className="mb-5 flex items-center gap-3 rounded-xl bg-surface-muted px-4 py-3 text-sm text-text-soft"><FolderOpen size={17} strokeWidth={1.5} className="text-text-muted" /><span>{state.documentos.length} documentos registrados</span><span className="hidden text-xs text-text-muted sm:block">Cada archivo está vinculado a una operación o maestro existente.</span></div>
       <DataTable rows={rows} columns={documentColumns(state, (id) => navigate(`/documentos/${id}`), setPreviewDocumentId)} getRowId={(row) => row.id} selectedIds={selectedIds} onSelectedIdsChange={setSelectedIds} searchValue={query} onSearchChange={(value) => { setQuery(value); setPage(1) }} page={page} pageSize={10} onPageChange={setPage} totalCount={rows.length} responsive showSelectionSummary={false} emptyTitle="No encontramos documentos" emptyDescription="Adjunta un archivo o prueba con otra búsqueda." />

@@ -6,6 +6,7 @@ export type ModuloSistema =
   | 'Compras'
   | 'Inventario'
   | 'Finanzas'
+  | 'Datos maestros'
   | 'Documentos'
   | 'Reportes'
   | 'Administración'

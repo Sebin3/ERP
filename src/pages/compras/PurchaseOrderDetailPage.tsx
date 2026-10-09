@@ -48,7 +48,7 @@ export function PurchaseOrderDetailPage() {
         <Card>
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-3"><StatusPill label={status} tone={tone(status)} /><span className="text-sm text-text-muted">{warehouse?.nombre ?? 'Almacén no encontrado'}</span>{order.fechaEntregaEsperada ? <span className="text-sm text-text-muted">Entrega: {date(order.fechaEntregaEsperada)}</span> : null}</div>
-            <div className="flex flex-wrap gap-2">{canEmit ? <Button leadingIcon={Check} onClick={emit}>Emitir orden</Button> : null}{purchase && status !== 'Borrador' ? <Button variant="secondary" leadingIcon={PackageCheck} onClick={() => navigate(`/compras/recepcion/${order.id}`)}>Ver recepción</Button> : null}</div>
+            <div className="flex flex-wrap gap-2">{canEmit ? <Button leadingIcon={Check} onClick={emit}>Emitir orden</Button> : null}{purchase && status !== 'Borrador' ? <Button variant="secondary" leadingIcon={PackageCheck} onClick={() => navigate(`/inventario/recepciones/${order.id}`)}>Ver recepción</Button> : null}</div>
           </div>
         </Card>
         <Card>

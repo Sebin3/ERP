@@ -1,5 +1,5 @@
 import { Bell, Menu, Search } from 'lucide-react'
-import { useLocation } from 'react-router-dom'
+import { matchPath, useLocation } from 'react-router-dom'
 import { navigationGroups, navigationRoutes } from '../../modules/navigation'
 import { useSesion } from '../../hooks'
 import { Avatar, IconButton, Input } from '../ui'
@@ -9,7 +9,7 @@ function findRoute(pathname: string) {
   if (exactRoute) return exactRoute
   return [...navigationRoutes].sort((a, b) => b.path.length - a.path.length).find((route) => {
     if (route.path === '/') return pathname === '/'
-    return pathname === route.path || pathname.startsWith(`${route.path}/`)
+    return Boolean(matchPath({ path: route.path, end: true }, pathname))
   })
 }
 

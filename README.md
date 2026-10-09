@@ -4,6 +4,8 @@ Frontend simulado de un ERP para una distribuidora peruana. Está construido con
 
 ## Guía de uso
 
+Consulta la [organización de módulos y su alcance](docs/ORGANIZACION_MODULOS.md) para conocer los nombres actuales del menú y las funciones pendientes para producción.
+
 Consulta el manual completo en [docs/GUIA_USO.md](docs/GUIA_USO.md). Ahí se explica cómo iniciar la demo, qué puede hacer cada rol, cómo funcionan ventas, compras, inventario, finanzas, documentos y reportes, y cuál es el flujo recomendado para presentarla.
 
 ## Comandos

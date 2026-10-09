@@ -69,7 +69,7 @@ function ReportGroup({ title, description, children }: { title: string; descript
 }
 
 function ReportCard({ children, className = '' }: { children: ReactNode; className?: string }) {
-  return <div className={`min-w-0 rounded-2xl bg-surface p-5 ${className}`}>{children}</div>
+  return <div className={`min-w-0 ${className}`}>{children}</div>
 }
 
 function SalesReport({ data }: { data: ReturnType<typeof buildReportData> }) {
@@ -85,7 +85,7 @@ function InventoryReport({ data }: { data: ReturnType<typeof buildReportData> })
 }
 
 function FinanceReport({ data }: { data: ReturnType<typeof buildReportData> }) {
-  return <div className="space-y-5"><div className="grid gap-5 xl:grid-cols-2"><ReportCard><StackedBar data={agingItems(data.cxc.franjas)} title="Antigüedad de CxC" /></ReportCard><ReportCard><StackedBar data={agingItems(data.cxp.franjas)} title="Antigüedad de CxP" /></ReportCard></div><ReportCard className="max-w-[920px]"><LineChart data={data.flujo.puntos.map((item) => ({ label: item.etiqueta, value: item.ingresos, secondary: item.egresos }))} title="Flujo de caja" subtitle="Ingresos y egresos" valueLabel="Ingresos" secondaryLabel="Egresos" /></ReportCard></div>
+  return <div className="space-y-5"><div className="grid gap-5 xl:grid-cols-2"><ReportCard><StackedBar data={agingItems(data.cxc.franjas)} title="Antigüedad de CxC" /></ReportCard><ReportCard><StackedBar data={agingItems(data.cxp.franjas)} title="Antigüedad de CxP" /></ReportCard></div><ReportCard className="max-w-[920px]"><LineChart data={data.flujo.puntos.map((item) => ({ label: item.etiqueta, value: item.ingresos, secondary: item.egresos }))} area title="Flujo de caja" subtitle="Ingresos y egresos" valueLabel="Ingresos" secondaryLabel="Egresos" /></ReportCard></div>
 }
 
 function ReportTable({ title, columns, rows }: { title: string; columns: string[]; rows: string[][] }) {

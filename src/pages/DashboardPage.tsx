@@ -122,7 +122,7 @@ export function DashboardPage() {
         </section>
 
         <section className="grid min-w-0 gap-4 xl:grid-cols-2">
-          {visible('flujoCaja') ? <section className="min-w-0 space-y-3"><LineChart data={dashboard.flujo.puntos.map((punto) => ({ label: punto.etiqueta, value: punto.ingresos, secondary: punto.egresos }))} title="Flujo de caja" subtitle="Ingresos y egresos del periodo" valueLabel="Ingresos" secondaryLabel="Egresos" /><div className="flex flex-wrap gap-4 px-1 text-xs text-text-muted"><span>Caja <strong className="tabular-nums text-text">{money(dashboard.flujo.saldoCajaActual)}</strong></span><span>Bancos <strong className="tabular-nums text-text">{money(dashboard.flujo.saldoBancosActual)}</strong></span></div></section> : null}
+          {visible('flujoCaja') ? <section className="min-w-0 space-y-3"><LineChart data={dashboard.flujo.puntos.map((punto) => ({ label: punto.etiqueta, value: punto.ingresos, secondary: punto.egresos }))} area title="Flujo de caja" subtitle="Ingresos y egresos del periodo" valueLabel="Ingresos" secondaryLabel="Egresos" /><div className="flex flex-wrap gap-4 px-1 text-xs text-text-muted"><span>Caja <strong className="tabular-nums text-text">{money(dashboard.flujo.saldoCajaActual)}</strong></span><span>Bancos <strong className="tabular-nums text-text">{money(dashboard.flujo.saldoBancosActual)}</strong></span></div></section> : null}
           {visible('embudoPedidos') ? <FunnelSteps data={dashboard.embudo.map((paso): FunnelStep => ({ label: paso.paso.replace('Pedidos ', ''), count: paso.cantidad, amount: paso.monto, conversion: paso.porcentajeConversion }))} title="Embudo de pedidos" /> : null}
         </section>
 

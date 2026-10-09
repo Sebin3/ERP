@@ -36,7 +36,7 @@ function sourcePath(state: ReturnType<typeof useERPStore.getState>, comprobante:
   if ('ventaId' in comprobante && comprobante.ventaId) return `/comercial/ventas/${comprobante.ventaId}`
   if ('compraId' in comprobante && comprobante.compraId) {
     const compra = state.compras.find((item) => item.id === comprobante.compraId)
-    return compra?.ordenCompraId ? `/compras/recepcion/${compra.ordenCompraId}` : undefined
+    return compra?.ordenCompraId ? `/inventario/recepciones/${compra.ordenCompraId}` : undefined
   }
   return undefined
 }
@@ -88,7 +88,7 @@ export function InvoicingPage() {
   const resetPage = <T,>(setter: Dispatch<SetStateAction<T>>, value: T) => { setter(value); setPage(1) }
 
   return <>
-    <PageHeader title="Facturación" description="Consulta central de facturas, boletas y notas de crédito emitidas." />
+    <PageHeader title="Comprobantes" description="Consulta de comprobantes de ventas, compras y notas de crédito." />
     <PageContent>
       <div className="mb-6 grid gap-3 sm:grid-cols-3"><div className="rounded-xl bg-accent-soft px-4 py-3"><p className="text-xs text-accent">Comprobantes emitidos</p><p className="mt-1 text-xl font-semibold tabular-nums text-text">{rows.filter((comprobante) => comprobante.estado === 'Emitido').length}</p></div><div className="rounded-xl bg-surface-muted px-4 py-3"><p className="text-xs text-text-muted">Importe neto mostrado</p><p className="mt-1 text-xl font-semibold tabular-nums text-text">{money(totalEmitido)}</p></div><div className="rounded-xl bg-danger-soft px-4 py-3"><p className="text-xs text-danger">Notas de crédito</p><p className="mt-1 text-xl font-semibold tabular-nums text-danger">{notes}</p></div></div>
       <div className="mb-5 flex items-center gap-3 rounded-xl bg-surface-muted px-4 py-3 text-sm text-text-soft"><FileText size={17} strokeWidth={1.5} className="text-text-muted" /><span>{state.comprobantes.length} comprobantes registrados</span><span className="hidden text-xs text-text-muted sm:block">Los comprobantes se generan desde ventas y compras.</span></div>

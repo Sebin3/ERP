@@ -138,16 +138,16 @@ describe('store de Zustand', () => {
   it('muestra exactamente los hijos permitidos de cada grupo por rol', () => {
     const expected = {
       Administrador: {
-        comercial: ['Cotizaciones', 'Ventas'], compras: ['Solicitudes', 'Órdenes'], inventario: ['Recepción', 'Despachos', 'Kardex', 'Transferencias', 'Ajustes'], finanzas: ['Facturación', 'Cuentas por cobrar', 'Cuentas por pagar', 'Caja', 'Bancos'], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: ['Usuarios', 'Roles', 'Permisos', 'Auditoría'],
+        comercial: ['Cotizaciones', 'Pedidos de venta'], compras: ['Solicitudes de compra', 'Órdenes de compra'], inventario: ['Existencias', 'Recepciones de compra', 'Salidas por venta', 'Transferencias', 'Ajustes de inventario', 'Kardex'], finanzas: ['Comprobantes', 'Cuentas por cobrar', 'Cuentas por pagar', 'Caja', 'Bancos'], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: ['Usuarios', 'Roles', 'Permisos', 'Auditoría'],
       },
       Vendedor: {
-        comercial: ['Cotizaciones', 'Ventas'], compras: [], inventario: ['Despachos', 'Kardex', 'Ajustes'], finanzas: ['Facturación', 'Cuentas por cobrar'], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: [],
+        comercial: ['Cotizaciones', 'Pedidos de venta'], compras: [], inventario: ['Existencias', 'Salidas por venta', 'Ajustes de inventario', 'Kardex'], finanzas: ['Comprobantes', 'Cuentas por cobrar'], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: [],
       },
       Almacenero: {
-        comercial: ['Ventas'], compras: ['Solicitudes', 'Órdenes'], inventario: ['Recepción', 'Despachos', 'Kardex', 'Transferencias', 'Ajustes'], finanzas: [], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: [],
+        comercial: ['Pedidos de venta'], compras: ['Solicitudes de compra', 'Órdenes de compra'], inventario: ['Existencias', 'Recepciones de compra', 'Salidas por venta', 'Transferencias', 'Ajustes de inventario', 'Kardex'], finanzas: [], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: [],
       },
       Contador: {
-        comercial: ['Cotizaciones', 'Ventas'], compras: ['Solicitudes', 'Órdenes'], inventario: ['Recepción', 'Despachos', 'Kardex', 'Transferencias', 'Ajustes'], finanzas: ['Facturación', 'Cuentas por cobrar', 'Cuentas por pagar', 'Caja', 'Bancos'], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: ['Auditoría'],
+        comercial: ['Cotizaciones', 'Pedidos de venta'], compras: ['Solicitudes de compra', 'Órdenes de compra'], inventario: ['Existencias', 'Recepciones de compra', 'Salidas por venta', 'Transferencias', 'Ajustes de inventario', 'Kardex'], finanzas: ['Comprobantes', 'Cuentas por cobrar', 'Cuentas por pagar', 'Caja', 'Bancos'], maestros: ['Clientes', 'Proveedores', 'Productos', 'Almacenes'], administracion: ['Auditoría'],
       },
     } as const
     for (const [rol, groups] of Object.entries(expected)) {

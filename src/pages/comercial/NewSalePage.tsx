@@ -53,15 +53,15 @@ export function NewSalePage() {
     const result = state.crearVenta({ clienteId, vendedorId: state.usuarioActualId, almacenId, condicionPago, plazoCreditoDias: condicionPago === 'Contado' ? 0 : plazoCreditoDias, cotizacionId: cotizacion?.id, items: lines.map((line) => ({ ...line, descripcionProducto: products.find((item) => item.id === line.productoId)?.nombre ?? '' })), observaciones: observaciones || undefined, usuarioId: state.usuarioActualId })
     if (!result.ok) { setToast({ message: result.error, tone: 'danger' }); return }
     const created = result.estado.ventas[result.estado.ventas.length - 1]
-    setToast({ message: 'Venta creada en borrador.', tone: 'success' })
+    setToast({ message: 'Pedido creado en borrador.', tone: 'success' })
     navigate(`/comercial/ventas/${created.id}`)
   }
 
-  if (!canCreate) return <><PageHeader title="Nueva venta" /><PageContent><EmptyState title="No tienes permiso para crear ventas" description="Solicita acceso a un Administrador para registrar una operación." /></PageContent></>
+  if (!canCreate) return <><PageHeader title="Nuevo pedido de venta" /><PageContent><EmptyState title="No tienes permiso para crear ventas" description="Solicita acceso a un Administrador para registrar una operación." /></PageContent></>
   if (convertedSale) return <><PageHeader title="Cotización ya convertida" actions={<Button variant="secondary" leadingIcon={ArrowLeft} onClick={() => navigate('/comercial/cotizaciones')}>Volver a cotizaciones</Button>} /><PageContent><EmptyState title="Esta cotización ya tiene una venta" description={`La cotización ya fue convertida en ${convertedSale.numero}. No se puede generar una segunda venta desde el mismo origen.`} /><div className="flex justify-center"><Button onClick={() => navigate(`/comercial/ventas/${convertedSale.id}`)}>Ver venta</Button></div></PageContent></>
 
   return <>
-    <PageHeader title="Nueva venta" description="Registra el pedido comercial y envíalo a revisión cuando esté completo." actions={<Button variant="secondary" leadingIcon={ArrowLeft} onClick={() => navigate('/comercial/ventas')}>Volver a ventas</Button>} />
+    <PageHeader title="Nuevo pedido de venta" description="Registra el pedido comercial y envíalo a revisión cuando esté completo." actions={<Button variant="secondary" leadingIcon={ArrowLeft} onClick={() => navigate('/comercial/ventas')}>Volver a pedidos</Button>} />
     <PageContent>
       <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_300px]">
         <div className="space-y-7">

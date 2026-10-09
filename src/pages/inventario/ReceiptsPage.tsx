@@ -47,10 +47,10 @@ export function ReceiptsPage() {
   }
 
   return <>
-    <PageHeader title="Recepción de compras" description="Registra la mercadería recibida y actualiza el kardex del almacén." />
+    <PageHeader title="Recepciones de compra" description="Registra la mercadería recibida y actualiza el kardex del almacén." />
     <PageContent>
       <div className="mb-5 flex items-center gap-3 rounded-xl bg-surface-muted px-4 py-3 text-sm text-text-soft"><PackageCheck size={17} strokeWidth={1.5} className="text-text-muted" /><span>{rows.length} órdenes emitidas</span><span className="hidden text-xs text-text-muted sm:block">La recepción puede ser parcial o completa.</span></div>
-      <DataTable rows={rows} columns={receiptColumns(state, (id) => navigate(`/compras/recepcion/${id}`), canCreate)} getRowId={(row) => row.id} selectedIds={selectedIds} onSelectedIdsChange={setSelectedIds} searchValue={query} onSearchChange={(value) => { setQuery(value); setPage(1) }} page={page} pageSize={10} onPageChange={setPage} totalCount={rows.length} responsive showSelectionSummary={false} toolbarActions={<Select aria-label="Filtrar recepciones por estado" value={statusFilter} onChange={(event) => resetStatus(event.target.value as 'todos' | EstadoOrdenCompra)} className="w-40"><option value="todos">Todos los estados</option>{(['Ordenada', 'Parcial', 'Atendida', 'Anulada'] as EstadoOrdenCompra[]).map((status) => <option key={status} value={status}>{status}</option>)}</Select>} emptyTitle="No hay compras para recibir" emptyDescription="Las órdenes emitidas aparecerán aquí cuando tengan una Compra asociada." />
+      <DataTable rows={rows} columns={receiptColumns(state, (id) => navigate(`/inventario/recepciones/${id}`), canCreate)} getRowId={(row) => row.id} selectedIds={selectedIds} onSelectedIdsChange={setSelectedIds} searchValue={query} onSearchChange={(value) => { setQuery(value); setPage(1) }} page={page} pageSize={10} onPageChange={setPage} totalCount={rows.length} responsive showSelectionSummary={false} toolbarActions={<Select aria-label="Filtrar recepciones por estado" value={statusFilter} onChange={(event) => resetStatus(event.target.value as 'todos' | EstadoOrdenCompra)} className="w-40"><option value="todos">Todos los estados</option>{(['Ordenada', 'Parcial', 'Atendida', 'Anulada'] as EstadoOrdenCompra[]).map((status) => <option key={status} value={status}>{status}</option>)}</Select>} emptyTitle="No hay compras para recibir" emptyDescription="Las órdenes emitidas aparecerán aquí cuando tengan una Compra asociada." />
     </PageContent>
   </>
 }

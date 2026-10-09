@@ -20,10 +20,11 @@
   --color-neutral: #6B7280;
   --color-neutral-soft: #F0F1F3;
   --color-chart-1: #2F6BFF;
-  --color-chart-2: #7FA4FF;
-  --color-chart-3: #B3C8FF;
-  --color-chart-4: #D6E1FF;
-  --color-chart-5: #C9CCD3;
+  --color-chart-2: #0D9488;
+  --color-chart-3: #8B5CF6;
+  --color-chart-4: #D97706;
+  --color-chart-5: #94A3B8;
+  --color-chart-6: #DB2777;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -45,6 +46,27 @@
   @keyframes chart-grow {
     from { transform: scaleY(0); transform-origin: bottom; opacity: .2; }
     to { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  }
+}
+
+@layer components {
+  .chart-panel {
+    border: 1px solid #E5EAF1;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFF 100%);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgb(15 23 42 / 3%);
+  }
+  .chart-plot { padding: 8px 0 0; background: transparent; }
+  .chart-tooltip {
+    max-width: calc(100% - 24px);
+    border: 1px solid #E2E8F0;
+    background: rgb(255 255 255 / 96%);
+    box-shadow: 0 8px 24px rgb(15 23 42 / 12%);
+    backdrop-filter: blur(8px);
+  }
+  @media (max-width: 480px) {
+    .chart-panel { padding: 14px; }
   }
 }
 
